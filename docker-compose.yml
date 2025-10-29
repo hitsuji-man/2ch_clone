@@ -2,7 +2,7 @@ services:
   # Laravel(PHP-FPM)
   backend:
     build:
-      context: ./backend
+      context: ./docker/backend
       dockerfile: Dockerfile
     volumes:
       - ./backend/src:/var/www/html
@@ -26,10 +26,10 @@ services:
     networks:
       - app-network
 
-    # Next.js
+  # Next.js
   frontend:
     build:
-      context: ./frontend
+      context: ./docker/frontend
       dockerfile: Dockerfile
     volumes:
       - ./frontend/src:/app
