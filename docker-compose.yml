@@ -6,7 +6,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./backend/src:/var/www
+      - ./backend/src:/var/www/html
   frontend:
     build:
       context: .
