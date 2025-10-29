@@ -2,7 +2,7 @@
 FROM php:8.4-fpm-alpine
 
 # Composerをコピー
-COPY --from=composer:2.4 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # 必要パッケージをインストール
 RUN apk add --no-cache \

@@ -47,7 +47,7 @@ services:
     volumes:
       - mysql-volume:/var/lib/mysql
     env_file:
-      - ./backend/src/.env.mysql
+      - ./backend/src/.env
     networks:
       - app-network
 
