@@ -10,6 +10,17 @@ RUN apk add --no-cache \
     docker-php-ext-install pdo pdo_mysql bcmath intl opcache && \
     rm -rf /var/cache/apk/*
 
+# Xdebug インストール（軽量版）
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
+    linux-headers \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && apk del .build-deps \
+    && rm -rf /tmp/pear
+
+# php.ini を配置（Xdebug設定含む）
+COPY php.ini /usr/local/etc/php/php.ini
+
 # 作業ディレクトリ
 WORKDIR /var/www/html
 
