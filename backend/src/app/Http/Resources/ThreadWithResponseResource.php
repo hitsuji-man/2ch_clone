@@ -15,13 +15,14 @@ class ThreadWithResponseResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            // リレーション先のレスは次チャプターで実装
             'id' => $this->id,
             'title' => $this->title,
             'name' => $this->name ?? 'カワイイ名無しさん',
             'content' => $this->content,
             'created_at' => $this->created_at->isoFormat('YYYY/M/D/(ddd) HH:mm:ss'),
             'updated_at' => $this->updated_at->isoFormat('YYYY/M/D/(ddd) HH:mm:ss'),
+            'responses_count' => $this->response_count,
+            'responses' => ResponseResource::collection($this->responses->sortBy('response_no')),
         ];
     }
 }
