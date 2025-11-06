@@ -22,12 +22,14 @@ class ResponseController extends Controller
      */
     public function store(int $threadId, Request $request)
     {
+        $data = $request->only(['name', 'email', 'content']);
+        $data['name'] = $data['name'] ?: null;  // 空文字ならnullに変換
         $thread = Thread::findOrFail($threadId);
         $responseNo = $thread->responses()->max('response_no') + 1;
 
         $response = $thread
             ->responses()
-            ->create(['response_no' => $responseNo] + $request->only(['name', 'email', 'content']));
+            ->create(['response_no' => $responseNo] + $data);
 
         return new ResponseResource($response);
     }

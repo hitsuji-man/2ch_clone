@@ -10,7 +10,7 @@ type LayoutProps = {
 const Layout = ({
   children,
   title,
-  bg = "bg-orange-300 bg-opacity-50",
+  bg = "bg-orange-200 bg-opacity-50",
 }: LayoutProps) => {
   return (
     <>

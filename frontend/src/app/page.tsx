@@ -54,6 +54,10 @@ const Home = () => {
     index: number
   ) => {
     e.preventDefault();
+    const data = { ...responses[index] };
+    // nameが空なら空文字を送る
+    if (!data.name) data.name = "";
+
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/threads/${threadId}/responses`,
@@ -167,7 +171,7 @@ const Home = () => {
                         <input
                           id={`name-${thread.id}`}
                           name="name"
-                          className="p-0.5 text-sm border border-gray-500 rounded"
+                          className="p-0.5 text-sm border border-gray-500 bg-white rounded"
                           type="text"
                           value={responses[index].name}
                           onChange={(e) => handleChange(e, index)}
@@ -178,7 +182,7 @@ const Home = () => {
                         <input
                           id={`email-${thread.id}`}
                           name="email"
-                          className="p-0.5 text-sm border border-gray-500 rounded"
+                          className="p-0.5 text-sm border border-gray-500 bg-white rounded"
                           type="text"
                           value={responses[index].email}
                           onChange={(e) => handleChange(e, index)}
@@ -188,7 +192,7 @@ const Home = () => {
                         <textarea
                           id={`content-${thread.id}`}
                           name="content"
-                          className="p-0.5 w-[510px] text-sm border border-gray-500 rounded"
+                          className="p-0.5 w-[510px] text-sm border border-gray-500 bg-white rounded"
                           value={responses[index].content}
                           onChange={(e) => handleChange(e, index)}
                           rows={5}
