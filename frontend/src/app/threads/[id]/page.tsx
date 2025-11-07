@@ -146,7 +146,7 @@ const Thread = () => {
             <textarea
               id="content"
               name="content"
-              className="p-0.5 w-[555px] text-sm border border-gray-500 bg-white rounded"
+              className="p-0.5 w-[583px] text-sm border border-gray-500 bg-white rounded"
               value={response.content}
               onChange={handleChange}
               rows={5}
